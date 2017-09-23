@@ -27,6 +27,10 @@ $max-width:px-to-rem(1440px);
 }
 
 .parallax-container {
+    height: 36rem;
+}
+
+.parallax-container.title {
     height: 26rem;
 }
 
@@ -38,20 +42,36 @@ $max-width:px-to-rem(1440px);
         @content;
     }
 }
-@mixin breakpoint2 {
+@mixin xlarge-breakpoint {
     @media screen and (max-width: 70rem) {
         @content;
     }
 }
 
-@media screen and (min-width: 90rem) {
-    br {
-        display: none;
+@mixin large-breakpoint {
+    @media screen and (max-width: 60rem) {
+        @content;
+    }
+}
+
+@mixin medium-breakpoint {
+    @media screen and (max-width: 40rem) {
+        @content;
+    }
+}
+
+@mixin small-breakpoint {
+    @media screen and (max-width: 25rem) {
+        @content;
+    }
+}@mixin small-nav-breakpoint {
+    @media screen and (max-width: 30rem) {
+        @content;
     }
 }
 
 .space {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 
@@ -99,6 +119,10 @@ img {
     width: 1px;
 }
 
+.assistive-hidden{
+    @include assistive;
+}
+
 
 /*GRID*/
 
@@ -139,18 +163,45 @@ $breakpoint-grid: "only screen and (min-width: 50rem)";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 $primary-font:'Open Sans','Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
 $secondary-font:'Georgia', Times, 'Times New Roman', serif;
-.texto {
+.texto, p {
     font-family: $primary-font;
     font-size: 1rem;
     line-height: 1.8rem;
+    color: #1D1D1B;
 }
 
 .titulo {
     font-size: 1.5rem;
+    line-height: 1.8rem;
     padding-bottom: 1.5rem;
     font-weight: bold;
     font-family: $secondary-font;
     color: #1D1D1B;
+    
+    &.t-address{
+        padding-bottom: 0.5rem;
+    }
+}
+
+.titulo2 {
+    @extend .titulo;
+    font-size: 3.5rem;
+    line-height: 5.6rem;
+    padding-bottom: 1.5rem;    
+    text-align: left;    
+    color: #FFF;
+    @include large-breakpoint{
+        font-size: 3.2rem;
+        line-height: 4.6rem;
+    } @include medium-breakpoint{
+        font-size: 3rem;
+        line-height: 4.6rem;
+    }
+      @include small-breakpoint{
+        font-size: 2.4rem;
+          line-height: 3.6rem;
+    }
+   
 }
 
 .link {
@@ -163,50 +214,94 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
     a {
         color: #FFF;
         text-transform: lowercase;
+        
+    }
+}
+
+.link-solo {
+    font-family: $primary-font;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+    color: #FFF;
+    padding-bottom: 1.5rem;    
+    font-style: italic;
+    a {
+        color: #FFF;
+        text-transform: lowercase;
+        transition: all 0.5s ease;
+    &:hover {
+        color: #777;
+        
+    }
+    }
+}
+
+
+.secondary-link {
+    float: left;
+    padding:0 1rem;
+    
+    @include breakpoint{
+        float:none;
+        padding: 0.5rem 0;
     }
 }
 
 
 /*HEADER*/
 
-.h-subscription {
+.h-nav {
     width: 100%;
     background-color: #B90C0E;
     height: auto;
+    position: fixed;
+    z-index: 9999;
    
 }
 
-
-/*FOOTER*/
-
-.f-previous {
-    width: 100%;
-    background-color: #1D1D1B;
-    height: auto;
-}
-
-nav {
-    background-color: #1D1D1B;
-    -webkit-box-shadow: none;
-    width: 100%;
-}
-
-.l-row.f-previous{
-    background-color: #1D1D1B;
-      @include breakpoint {
-        height: 20rem;
+.l-intro{
+    padding-top: 6.3rem;
+     @include small-breakpoint {
+        
+      padding-top: 9rem;
       
     }
 }
 
+
+
+.l-row.h-nav{
+    background-color: #B90C0E;
+      @include small-nav-breakpoint {
+        
+        height: 14rem;
+        padding-bottom: 6rem;
+      
+    }
+}
+
+////////////////
+/*NAVIGATION*/
+///////////////
+
+
+
+
+nav {
+    background-color:  #B90C0E;
+    -webkit-box-shadow: none;
+     width: 100%;
+    }
+
 nav ul {
-    width: 60%;
-    margin-left: 40%;
+    width: 70%;
+    margin-left: 30%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    @include breakpoint {
+    @include small-nav-breakpoint {
+        border-top: 1px solid #fff;
         width: 100%;
         margin: 0 auto;
         justify-content: flex-start;
@@ -216,20 +311,28 @@ nav ul {
 }
 
 nav ul li {
-    width: 30%;
-    padding: 4rem 0 0 0;
+    width: 25%;
+    padding: 2rem 0 0 0;
     text-align: right;
     a {
         font-size: 0.9rem;
-        background-color: #1D1D1B;
+        background-color: #B90C0E;
         color: #fff;
         transition: all 0.5s ease;
+        text-transform: uppercase;
+        font-weight: bold;
         &:hover {
-            background-color: #1D1D1B;
+            background-color:#B90C0E;
             color: #aaa;
         }
     }
-    @include breakpoint {
+    
+     @include breakpoint {
+        width:40%;
+        
+        
+    }
+    @include small-nav-breakpoint {
         width:100%;
         text-align: center;
         display: block;
@@ -240,20 +343,48 @@ nav ul li {
 }
 
 
+
+
+
+
+////////////////
+/*FOOTER*/
+///////////////
+
+.f-previous {
+    width: 100%;
+    background-color: #1D1D1B;
+    height: auto;
+}
+
+
+
+
+
 /*IMAGES*/
 
 svg {
     display: block;
-    width: 70%;
-    min-width: 240px;
+    float: left;
+    width: 30%;
+    min-width: 120px;
+    max-width: 140px;
     height: auto;
-    @include breakpoint {
+    
+    @include small-nav-breakpoint {
+        float: none;
+        padding-bottom: 1rem;
         width: 25%;
-        min-width: 180px;
+        min-width: 80px;
+        max-width: 140px;
         height: auto;
         margin: auto;
     }
+   
 }
+
+
+
 
 
 img.mockup {
@@ -269,24 +400,155 @@ img.mockup {
 }
 
 img.logo {
-    width: 70%;
+    width: 40%;
     height: auto;
     
      @include breakpoint {
-        width: 20%;
+         padding-top: 2rem;
+        margin-left: 0;
+        width: 30%;
         height: auto;
+         
+      
        
     }
 }
 
 
+/*LAYOUT*/
+.l-toogle-btn{
+    width: 100%;
+    margin: 0 auto;
+    height: 9rem;
+    padding-top: 3rem;
+    text-align: center;
+    border-bottom: 0.5px solid #1D1D1B;
+    @include breakpoint{
+       
+       height: 12rem;
+    }
+}
+
+.h-intro{
+    width: 40%;
+    margin: 0;
+    height: 10rem;
+    padding: 9rem 1.5rem;
+    text-align: left;
+    
+     @include large-breakpoint{
+       width:60%;
+       height: 10rem;
+    }
+    
+    
+    @include medium-breakpoint{
+       width:80%;
+       height: 10rem;
+    }
+    
+    @include small-breakpoint{
+       width:100%;
+       height: 10rem;
+    }
+}
+
+.intro{
+    width: 100%;
+    margin: 0 auto;
+    height: 10rem;
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 0.5px solid #1D1D1B;
+    @include breakpoint{
+       
+       height: 10rem;
+    }
+}
+
+.l-address{
+    width: 100%;
+    padding-top: 0.5rem;
+    
+   
+    @include breakpoint{
+        width:100%;
+    }
+}
+
+.l-address p{
+    font-family: $primary-font;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+    font-style: normal;
+    color: #FFF;
+}
+
+
 /*MATERIALIZE MODS*/
 
+.l-btn-mod{
+   display:inline-block;
+}
+
 .btn-mod {
-    background-color: #B90C0E;
+   
+    background-color: #B90C0E;    
     transition: all 0.5s ease;
     &:hover {
         background-color: #777;
+        
+    }
+}
+
+hr {
+	border: none;
+    height: 0.04rem;
+    background-color: #ddd;
+}
+
+.btn-mod-border {
+    width:100%;
+    min-width:160px;
+    background-color: #fff;
+    line-height: 3rem;
+    height: 3rem;
+    border: 1px solid #777;
+    border-radius: 4px;
+    box-shadow: none;
+    transition: all 0.5s ease;
+    box-sizing: border-box;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+    font-family: $secondary-font;
+    font-size: 1rem;
+    font-style: italic;
+    color: #777;
+     text-transform: lowercase;
+    &:hover {
+        width:100%;
+        background-color: #fff;
+        min-width:160px;
+        box-shadow: none;
+        border: 1px solid #B90C0E;
+        box-sizing: border-box;
+        color: #B90C0E;
+    }
+    &:focus {
+        background-color: #fff;
+        color: #B90C0E;
+        border: 1px solid #B90C0E;
+    }
+}
+
+
+.btn-active{
+    border-color: #B90C0E;
+    color: #B90C0E;
+       transition: all 0.5s ease;
+    &:hover {
+        border-color: #777;
+        color: #777;
     }
 }
 
@@ -297,18 +559,29 @@ img.logo {
 
 /*MAILCHIMP*/
 
+div#mc_embed_signup_scroll{
+    width:90%;
+    margin: 0 auto;
+}
 #mc_embed_signup {
-    background: #B90C0E;
-    clear: left;
-    font: 14px $primary-font;
+    
+    background: rgba(black, 0.6);
+    position: absolute;
+    bottom: 0;
+    left:0;
+    font: 1rem $primary-font;
     width: 100%;
 }
 
 #mc_embed_signup form {
-    text-align: left;
-    padding: 3rem 0 3rem 0;
-    @media screen and (max-width: 90rem) {
-        padding:2rem 0 3rem 0;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 0 2rem 0;
+    @include breakpoint{
+        width:75%;
+    }@include medium-breakpoint{
+        width:95%;
     }
 }
 
@@ -341,12 +614,25 @@ img.logo {
 
 #mc_embed_signup label {
     display: block;
-    font-size: 1.3rem;
-    padding-bottom: 1.5rem;
+    font-size: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 4vw;
     font-weight: bold;
+    text-align: left;
     font-family: $secondary-font;
     font-style: italic;
     color: #fff;
+    
+    @include xlarge-breakpoint{
+        padding-left: 2vw;
+    }
+     @include large-breakpoint{
+        padding-left: 1vw;
+    }
+    
+    @include breakpoint{
+        padding-left: 0;
+    }
 }
 
 #mc_embed_signup .clear {
