@@ -1,3 +1,32 @@
+//hamburguer menu navigation
+
+$(document).ready(function () {
+    
+var hamburger = document.getElementById("hamburger");
+var content = document.getElementById("nav-content");
+var navigation = document.getElementById("h-navigation");
+// On click
+
+hamburger.addEventListener("click", function () {
+
+    var aux = hamburger.classList.toggle("is-active");
+
+    if (aux) {
+        content.classList.add("is-visible");
+        content.style.visibility = 'visible';
+        navigation.classList.add("drop");
+
+    } else {
+        content.classList.remove("is-visible");
+        content.style.visibility = 'hidden';
+        navigation.classList.remove("drop");
+
+    }
+
+});
+
+});
+
 //paralax function
 
 $(document).ready(function () {
@@ -73,6 +102,7 @@ function hasScrolled() {
     
     lastScrollTop = st;
 }
+
 
 
 
