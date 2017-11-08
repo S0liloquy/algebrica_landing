@@ -495,8 +495,24 @@ img.logo {
    
     background-color: #B90C0E;    
     transition: all 0.5s ease;
+    &:link {
+        background-color: #B90C0E;
+        
+    }
     &:hover {
         background-color: #777;
+        
+    }
+    &:active {
+        background-color: #B90C0E;
+        
+    }
+    &:focused {
+        background-color: #777;
+        
+    }
+    &:visited {
+        background-color: #B90C0E;
         
     }
 }
