@@ -187,9 +187,15 @@ img {
 .h-nav {
   width: 100%;
   background-color: #B90C0E;
-  height: auto;
+  height: 8rem;
   position: fixed;
-  z-index: 9999; }
+  top: 0;
+  z-index: 9999;
+  -webkit-transition: top 0.2s ease-in-out;
+          transition: top 0.2s ease-in-out; }
+
+.h-nav-up {
+  top: -8rem; }
 
 .l-intro {
   padding-top: 6.3rem; }
