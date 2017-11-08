@@ -264,6 +264,9 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
 .h-nav-up{
    
     top: -8rem;
+    @include small-nav-breakpoint {
+    top:- 14.5rem;
+    }
 }
 
 .l-intro{
@@ -280,7 +283,7 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
     background-color: #B90C0E;
       @include small-nav-breakpoint {
         
-        height: 14rem;
+        height: 14.5rem;
         padding-bottom: 6rem;
       
     }

@@ -196,6 +196,9 @@ img {
 
 .h-nav-up {
   top: -8rem; }
+  @media screen and (max-width: 30rem) {
+    .h-nav-up {
+      top: -14.5rem; } }
 
 .l-intro {
   padding-top: 6.3rem; }
@@ -207,7 +210,7 @@ img {
   background-color: #B90C0E; }
   @media screen and (max-width: 30rem) {
     .l-row.h-nav {
-      height: 14rem;
+      height: 14.5rem;
       padding-bottom: 6rem; } }
 
 /*NAVIGATION*/
