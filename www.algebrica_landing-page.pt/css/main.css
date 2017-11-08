@@ -355,8 +355,16 @@ img.logo {
 .btn-mod {
   background-color: #B90C0E;
   transition: all 0.5s ease; }
+  .btn-mod:link {
+    background-color: #B90C0E; }
   .btn-mod:hover {
     background-color: #777; }
+  .btn-mod:active {
+    background-color: #B90C0E; }
+  .btn-mod:focused {
+    background-color: #777; }
+  .btn-mod:visited {
+    background-color: #B90C0E; }
 
 hr {
   border: none;
