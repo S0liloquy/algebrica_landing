@@ -170,7 +170,8 @@ img {
   .link-solo a {
     color: #FFF;
     text-transform: lowercase;
-    transition: all 0.5s ease; }
+    -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease; }
     .link-solo a:hover {
       color: #777; }
 
@@ -212,17 +213,37 @@ nav {
 nav ul {
   width: 70%;
   margin-left: 30%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center; }
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
   @media screen and (max-width: 30rem) {
     nav ul {
       border-top: 1px solid #fff;
       width: 100%;
       margin: 0 auto;
-      justify-content: flex-start;
-      flex-direction: column; } }
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column; } }
 
 nav ul li {
   width: 25%;
@@ -232,7 +253,8 @@ nav ul li {
     font-size: 0.9rem;
     background-color: #B90C0E;
     color: #fff;
-    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease;
     text-transform: uppercase;
     font-weight: bold; }
     nav ul li a:hover {
@@ -354,7 +376,8 @@ img.logo {
 
 .btn-mod {
   background-color: #B90C0E;
-  transition: all 0.5s ease; }
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease; }
   .btn-mod:link {
     background-color: #B90C0E; }
   .btn-mod:hover {
@@ -380,7 +403,8 @@ hr {
   border: 1px solid #777;
   border-radius: 4px;
   box-shadow: none;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
   box-sizing: border-box;
   padding-bottom: 1.5rem;
   font-weight: bold;
@@ -405,7 +429,8 @@ hr {
 .btn-active {
   border-color: #B90C0E;
   color: #B90C0E;
-  transition: all 0.5s ease; }
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease; }
   .btn-active:hover {
     border-color: #777;
     color: #777; }
@@ -447,8 +472,6 @@ div#mc_embed_signup_scroll {
   font-style: italic;
   font-size: 1rem;
   border: 1px solid #000000;
-  -webkit-border-radius: 0.3rem;
-  -moz-border-radius: 0.3rem;
   border-radius: 0.3rem;
   color: #343434;
   background-color: #fff;
@@ -491,8 +514,6 @@ div#mc_embed_signup_scroll {
   font-weight: bold;
   font-size: 1rem;
   border: none;
-  -webkit-border-radius: 0.3rem;
-  -moz-border-radius: 0.3rem;
   border-radius: 0.3rem;
   letter-spacing: .03em;
   color: #fff;
@@ -504,7 +525,8 @@ div#mc_embed_signup_scroll {
   padding: 0 1.3rem;
   display: inline-block;
   margin: 0;
-  transition: all 0.23s ease-in-out 0s; }
+  -webkit-transition: all 0.23s ease-in-out 0s;
+          transition: all 0.23s ease-in-out 0s; }
 
 #mc_embed_signup .button:hover {
   background-color: #777;
@@ -555,3 +577,5 @@ div#mc_embed_signup_scroll {
   #mc_embed_signup .button {
     width: 100%;
     margin: 0; } }
+
+/*# sourceMappingURL=main.css.map */

@@ -261,8 +261,7 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
 
 .l-intro{
     padding-top: 6.3rem;
-     @include small-breakpoint {
-        
+     @include small-breakpoint {        
       padding-top: 9rem;
       
     }
