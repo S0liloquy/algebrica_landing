@@ -7,6 +7,7 @@
   width: extend-to-zoom;
   zoom: 1.0; }
 /*LAYOUT VARIABLES*/
+/*BREAKPOINTS*/
 /*LAYOUT*/
 .t-wrap {
   width: 80%;
@@ -15,12 +16,14 @@
   margin-bottom: 4rem; }
 
 .parallax-container {
-  height: 36rem; }
+  height: 42rem; }
+  @media screen and (max-width: 30rem) {
+    .parallax-container {
+      height: 33.5rem; } }
 
 .parallax-container.title {
   height: 26rem; }
 
-/*BREAKPOINTS*/
 .space {
   margin-bottom: 2rem; }
 
@@ -114,7 +117,8 @@ img {
   .column-12-of-12 {
     width: 100%; } }
 /*TYPOGRAPHY*/
-.texto, p {
+.texto,
+p {
   font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
   font-size: 1rem;
   line-height: 1.8rem;
@@ -133,7 +137,7 @@ img {
 .titulo2 {
   font-size: 3.5rem;
   line-height: 5.6rem;
-  padding-bottom: 1.5rem;
+  padding: 5rem 0 1.5rem 0;
   text-align: left;
   color: #fff; }
   @media screen and (max-width: 60rem) {
@@ -147,7 +151,8 @@ img {
   @media screen and (max-width: 25rem) {
     .titulo2 {
       font-size: 2.4rem;
-      line-height: 3.6rem; } }
+      line-height: 3.6rem;
+      padding: 0 0 1.5rem 0; } }
 
 .link {
   font-size: 1.5rem;
@@ -191,17 +196,19 @@ img {
   position: fixed;
   top: 0;
   z-index: 9999;
-  -webkit-transition: top 0.2s ease-in-out;
-          transition: top 0.2s ease-in-out; }
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out; }
   @media screen and (max-width: 25rem) {
     .h-nav {
       height: 5rem; } }
 
 .h-nav-up {
-  top: -8rem; }
+  top: -8rem;
+  opacity: 0; }
   @media screen and (max-width: 30rem) {
     .h-nav-up {
-      top: -5rem; } }
+      top: -5rem;
+      opacity: 0; } }
 
 .l-intro {
   padding-top: 6.3rem; }
@@ -213,7 +220,7 @@ img {
   background-color: #B90C0E; }
   @media screen and (max-width: 30rem) {
     #h-navigation.drop {
-      height: 20rem;
+      height: 21rem;
       background-color: #B90C0E; } }
 
 /*NAVIGATION*/
@@ -225,7 +232,10 @@ nav {
     nav {
       height: 3rem; }
       nav ul#nav-content {
-        visibility: hidden; }
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: opacity 0.8s ease;
+                transition: opacity 0.8s ease; }
         nav ul#nav-content.is-visible {
           margin: 0 auto;
           padding-top: 3rem;
@@ -234,7 +244,8 @@ nav {
           -webkit-box-pack: center;
           -webkit-justify-content: center;
               -ms-flex-pack: center;
-                  justify-content: center; }
+                  justify-content: center;
+          opacity: 1; }
           nav ul#nav-content.is-visible li {
             text-align: center;
             width: 100%;
