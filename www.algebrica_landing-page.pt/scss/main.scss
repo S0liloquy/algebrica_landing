@@ -668,14 +668,7 @@ a.waves-effect.waves-light.btn.btn-mod {
     background-color: $primary-red;
     transition: all 0.5s ease;
     &:link {
-<<<<<<< HEAD
-        background-color: #B90C0E;
-        
-    }
-    &:hover {
-        background-color: #777;
-        
-=======
+
         background-color: $primary-red;
     }
     &:visited {
@@ -685,7 +678,7 @@ a.waves-effect.waves-light.btn.btn-mod {
     &:focus,
     &:active {
         background-color: $link-grey;
->>>>>>> menu_tentativa
+
     }
     &:active {
         background-color: #B90C0E;
