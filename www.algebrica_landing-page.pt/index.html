@@ -43,11 +43,11 @@
        
         <section class="l-wraper">
            <h1 class="assistive-hidden">Corpo do website Autoprofissional menu</h1>
-            <header class="l-row h-nav">
+            <header id="h-navigation" class="l-row h-nav nav-down">
                
                 <div class="column-12-of-12">
                   
-                    <nav>
+                    <nav id="navigation" class="navigation">
                     <h2 class="assistive-hidden">Menu do website Autoprofissional</h2>
                     
                     <a href="#intro">
@@ -132,13 +132,18 @@
 
                 
                 
-
+ 
                    
-                    <ul>
+                    <ul id="nav-content">
                        <li><a href="#publicacoes">publicações</a></li>
+                       <li><a href="#noticias">noticias</a></li>
                        <li><a href="#contactos">contactos</a></li>
                     </ul>
-                       
+                     <button id="hamburger" class="hamburger hamburger-elastic show-menu nav-btn-mod" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="true/false">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button> 
                   
                 </nav>
                 
@@ -147,7 +152,7 @@
 
             </header>
             
-            <section class="l-row l-intro" id="intro">
+            <section class="l-row" id="intro">
                 <h3 class="assistive-hidden">secção introdução</h3>
                  <div class="parallax-container">
       <div class="parallax"><img src="imgs/paralax2.jpg" alt="imagem em plano aberto de uma estrada à distância, com as luzes dos carros arrastadas"></div>
@@ -200,7 +205,9 @@
                         <div class="t-wrap">
                             <p class="titulo"><em>newsletter</em> auto profissional</p>
                             <p class="texto">Entrevistas a gestores e responsáveis do pós-venda automóvel. Pretende ser um instrumento de partilha de experiências entre os quadros do negócio. Com distribuição gratuita - via email - para os profissionais do pós-venda automóvel, tem uma periodicidade mensal e conta atualmente com mais de 12.000 subscritores ativos.</p>
+
                             <p class="link"><a class="waves-effect waves-light btn btn-mod" href="http://www.algebrica.pt/grupo-algebrica/Arquivo/Newsletters/Auto_EN/97/index.html" target="_blank">ler edição</a></p>
+
                         </div>
                     </div>
                 </article>
@@ -226,17 +233,7 @@
                 </article>
                 
             </section>
-              <section class="row noticias" id="noticias">
-                <h3 class="assistive-hidden">secção noticias</h3>
-                 <div class="parallax-container  title">
-      <div class="parallax"><img src="imgs/paralax1.jpg" alt="imagem do plano próximo da roda de uma carro em contacto com a estrada"></div>
-        
-    </div>
-           
-           
-           
-           
-            </section>
+               
             <footer class="l-row f-previous" id="contactos">
                <h3 class="assistive-hidden">secção contactos</h3>
                 <div class="column-3-of-12">

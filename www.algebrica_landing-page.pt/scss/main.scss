@@ -1,38 +1,44 @@
 /*VIEWPORT*/
 
-@viewport{
+@viewport {
     zoom: 1.0;
     width: extend-to-zoom;
 }
 
-@-ms-viewport{
+@-ms-viewport {
     width: extend-to-zoom;
     zoom: 1.0;
 }
 
+/////////////////////
+//////VARIABLES/////
 
 /*LAYOUT VARIABLES*/
 
-
 $min-width:px-to-rem(280px);
 $max-width:px-to-rem(1440px);
-
-/*LAYOUT*/
-
-.t-wrap {
-    width: 80%;
-    margin: 0 auto;
-    padding-top: 4rem;
-    margin-bottom: 4rem;
-}
-
-.parallax-container {
-    height: 36rem;
-}
-
-.parallax-container.title {
-    height: 26rem;
-}
+$primary-red:#B90C0E;
+$link-grey:#777;
+$text-grey:#1D1D1B;
+$multipurpose-white: #fff;
+// HAMBURGUER VARIABLES
+// Settings
+// ==================================================
+$hamburger-padding-x: 1.4rem !default;
+$hamburger-padding-y: 1rem !default;
+$hamburger-layer-width: 2rem !default;
+$hamburger-layer-height: 3px!default;
+$hamburger-layer-spacing: 5px !default;
+$hamburger-layer-color: $multipurpose-white !default;
+$hamburger-layer-border-radius: 3px !default;
+$hamburger-hover-opacity: 0.7 !default;
+$hamburger-hover-transition-duration: 0.15s !default;
+$hamburger-hover-transition-timing-function: linear !default;
+// To use CSS filters as the hover effect instead of opacity,
+// set $hamburger-hover-use-filter as true and
+// change the value of $hamburger-hover-filter accordingly.
+$hamburger-hover-use-filter: false !default;
+$hamburger-hover-filter: opacity(50%) !default;
 
 
 /*BREAKPOINTS*/
@@ -42,6 +48,7 @@ $max-width:px-to-rem(1440px);
         @content;
     }
 }
+
 @mixin xlarge-breakpoint {
     @media screen and (max-width: 70rem) {
         @content;
@@ -64,11 +71,64 @@ $max-width:px-to-rem(1440px);
     @media screen and (max-width: 25rem) {
         @content;
     }
-}@mixin small-nav-breakpoint {
+}
+
+@mixin small-nav-breakpoint {
     @media screen and (max-width: 30rem) {
         @content;
     }
 }
+
+@mixin navigation-break {
+    @media screen and (max-width: 30rem) {
+        height: 3rem;
+        ul#nav-content {
+            visibility: hidden;
+            opacity:0;
+            transition: opacity 0.8s ease;
+            &.is-visible {
+                margin: 0 auto;
+                padding-top: 3rem;
+                border: none;
+                width: 100%;
+                justify-content: center;
+                opacity:1;
+                li {
+                    text-align: center;
+                    width: 100%;
+                    align-self: center;
+                }
+            }
+        }
+        #hamburger {
+            visibility: visible;
+        }
+    }
+}
+
+
+
+/*LAYOUT*/
+
+.t-wrap {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.parallax-container {
+    height: 42rem;
+    @include small-nav-breakpoint{
+        height:33.5rem;
+    }
+}
+
+.parallax-container.title {
+    height: 26rem;
+}
+
+
 
 .space {
     margin-bottom: 2rem;
@@ -119,7 +179,7 @@ img {
     width: 1px;
 }
 
-.assistive-hidden{
+.assistive-hidden {
     @include assistive;
 }
 
@@ -161,13 +221,22 @@ $breakpoint-grid: "only screen and (min-width: 50rem)";
 /*TYPOGRAPHY*/
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-$primary-font:'Open Sans','Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
-$secondary-font:'Georgia', Times, 'Times New Roman', serif;
-.texto, p {
+$primary-font:'Open Sans',
+'Helvetica Neue',
+Arial,
+Helvetica,
+Verdana,
+sans-serif;
+$secondary-font:'Georgia',
+Times,
+'Times New Roman',
+serif;
+.texto,
+p {
     font-family: $primary-font;
     font-size: 1rem;
     line-height: 1.8rem;
-    color: #1D1D1B;
+    color: $text-grey;
 }
 
 .titulo {
@@ -176,9 +245,8 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
     padding-bottom: 1.5rem;
     font-weight: bold;
     font-family: $secondary-font;
-    color: #1D1D1B;
-    
-    &.t-address{
+    color: $text-grey;
+    &.t-address {
         padding-bottom: 0.5rem;
     }
 }
@@ -187,21 +255,22 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
     @extend .titulo;
     font-size: 3.5rem;
     line-height: 5.6rem;
-    padding-bottom: 1.5rem;    
-    text-align: left;    
-    color: #FFF;
-    @include large-breakpoint{
+    padding:5rem 0 1.5rem 0;
+    text-align: left;
+    color: $multipurpose-white;
+    @include large-breakpoint {
         font-size: 3.2rem;
         line-height: 4.6rem;
-    } @include medium-breakpoint{
+    }
+    @include medium-breakpoint {
         font-size: 3rem;
         line-height: 4.6rem;
     }
-      @include small-breakpoint{
+    @include small-breakpoint {
         font-size: 2.4rem;
-          line-height: 3.6rem;
+        line-height: 3.6rem;
+        padding:0 0 1.5rem 0;
     }
-   
 }
 
 .link {
@@ -212,9 +281,8 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
     font-family: $secondary-font;
     font-style: italic;
     a {
-        color: #FFF;
+        color: $multipurpose-white;
         text-transform: lowercase;
-        
     }
 }
 
@@ -222,27 +290,24 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
     font-family: $primary-font;
     font-size: 0.8rem;
     line-height: 1.5rem;
-    color: #FFF;
-    padding-bottom: 1.5rem;    
+    color: $multipurpose-white;
+    padding-bottom: 1.5rem;
     font-style: italic;
     a {
-        color: #FFF;
+        color: $multipurpose-white;
         text-transform: lowercase;
         transition: all 0.5s ease;
-    &:hover {
-        color: #777;
-        
-    }
+        &:hover {
+            color: $link-grey;
+        }
     }
 }
 
-
 .secondary-link {
     float: left;
-    padding:0 1rem;
-    
-    @include breakpoint{
-        float:none;
+    padding: 0 1rem;
+    @include breakpoint {
+        float: none;
         padding: 0.5rem 0;
     }
 }
@@ -252,46 +317,54 @@ $secondary-font:'Georgia', Times, 'Times New Roman', serif;
 
 .h-nav {
     width: 100%;
-    background-color: #B90C0E;
-    height: auto;
+    background-color: $primary-red;
+    height: 8rem;
     position: fixed;
+    top: 0;
     z-index: 9999;
-   
-}
-
-.l-intro{
-    padding-top: 6.3rem;
-     @include small-breakpoint {
-        
-      padding-top: 9rem;
-      
+    transition: all 0.2s ease-in-out;
+    @include small-breakpoint {
+        height: 5rem;
     }
 }
 
+.h-nav-up {
+    top: -8rem;
+    opacity: 0;
+    @include small-nav-breakpoint {
+        top: -5rem;
+        opacity: 0;
+    }
+}
 
+.l-intro {
+    padding-top: 6.3rem;
+    @include small-breakpoint {
+        padding-top: 0;
+    }
+}
 
-.l-row.h-nav{
-    background-color: #B90C0E;
-      @include small-nav-breakpoint {
-        
-        height: 14rem;
-        padding-bottom: 6rem;
-      
+#h-navigation {
+    background-color: $primary-red;
+    @include small-nav-breakpoint {
+        &.drop {
+            height: 21rem;
+            background-color: $primary-red;
+        }
     }
 }
 
 ////////////////
+
 /*NAVIGATION*/
+
 ///////////////
-
-
-
-
 nav {
-    background-color:  #B90C0E;
+    background-color: $primary-red;
     -webkit-box-shadow: none;
-     width: 100%;
-    }
+    width: 100%;
+    @include navigation-break;
+}
 
 nav ul {
     width: 70%;
@@ -301,12 +374,10 @@ nav ul {
     justify-content: flex-end;
     align-items: center;
     @include small-nav-breakpoint {
-        border-top: 1px solid #fff;
         width: 100%;
         margin: 0 auto;
         justify-content: flex-start;
         flex-direction: column;
-        
     }
 }
 
@@ -316,49 +387,169 @@ nav ul li {
     text-align: right;
     a {
         font-size: 0.9rem;
-        background-color: #B90C0E;
-        color: #fff;
-        transition: all 0.5s ease;
+        background-color: $primary-red;
+        color: $multipurpose-white;
+        transition: opacity 0.5s ease;
         text-transform: uppercase;
         font-weight: bold;
         &:hover {
-            background-color:#B90C0E;
-            color: #aaa;
+            background-color: $primary-red;
+            opacity: 0.7;
         }
     }
-    
-     @include breakpoint {
-        width:40%;
-        
-        
+    @include breakpoint {
+        width: 40%;
     }
     @include small-nav-breakpoint {
-        width:100%;
+        width: 100%;
         text-align: center;
         display: block;
         padding: 0;
-        
     }
-  
 }
 
+// Hamburger
+// ==================================================
+button#hamburger.hamburger.hamburger-elastic.show-menu.nav-btn-mod.is-active {
+    background-color: transparent;
+    &:link {
+        background-color: transparent;
+    }
+    &:visited {
+        background-color: transparent;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: transparent;
+    }
+}
 
+button#hamburger.hamburger.hamburger-elastic.show-menu.nav-btn-mod {
+    background-color: transparent;
+    &:link {
+        background-color: transparent;
+    }
+    &:visited {
+        background-color: transparent;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: transparent;
+    }
+}
 
+#hamburger {
+    visibility: hidden;
+}
 
+.hamburger {
+    padding: $hamburger-padding-y $hamburger-padding-x;
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: $hamburger-hover-transition-duration;
+    transition-timing-function: $hamburger-hover-transition-timing-function;
+    // Normalize (<button>)
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+    position: absolute;
+    right: 0;
+    top: 0;
+    &:hover {
+        @if $hamburger-hover-use-filter==true {
+            filter: $hamburger-hover-filter;
+        }
+        @else {
+            opacity: $hamburger-hover-opacity;
+        }
+    }
+}
 
+.hamburger-box {
+    width: $hamburger-layer-width;
+    height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: $hamburger-layer-height / -2;
+    &,
+    &::before,
+    &::after {
+        width: $hamburger-layer-width;
+        height: $hamburger-layer-height;
+        background-color: $hamburger-layer-color;
+        border-radius: $hamburger-layer-border-radius;
+        position: absolute;
+        transition-property: transform;
+        transition-duration: 0.15s;
+        transition-timing-function: ease;
+    }
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+    }
+    &::before {
+        top: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+    }
+    &::after {
+        bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+    }
+}
+
+//HAMBURGEUER ANIMATIONS
+.hamburger-elastic {
+    .hamburger-inner {
+        top: $hamburger-layer-height / 2;
+        transition-duration: 0.275s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        &::before {
+            top: $hamburger-layer-height + $hamburger-layer-spacing;
+            transition: opacity 0.125s 0.275s ease;
+        }
+        &::after {
+            top: ($hamburger-layer-height * 2) + ($hamburger-layer-spacing * 2);
+            transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    }
+    &.is-active {
+        .hamburger-inner {
+            $y-offset: $hamburger-layer-spacing + $hamburger-layer-height;
+            transform: translate3d(0, $y-offset, 0) rotate(-135deg);
+            transition-delay: 0.075s;
+            &::before {
+                transition-delay: 0s;
+                opacity: 0;
+            }
+            &::after {
+                transform: translate3d(0, $y-offset * -2, 0) rotate(270deg);
+                transition-delay: 0.075s;
+            }
+        }
+    }
+}
 
 ////////////////
-/*FOOTER*/
-///////////////
 
+/*FOOTER*/
+
+///////////////
 .f-previous {
     width: 100%;
-    background-color: #1D1D1B;
+    background-color: $text-grey;
     height: auto;
 }
-
-
-
 
 
 /*IMAGES*/
@@ -370,9 +561,8 @@ svg {
     min-width: 120px;
     max-width: 140px;
     height: auto;
-    
     @include small-nav-breakpoint {
-        float: none;
+        float: left;
         padding-bottom: 1rem;
         width: 25%;
         min-width: 80px;
@@ -380,128 +570,122 @@ svg {
         height: auto;
         margin: auto;
     }
-   
 }
-
-
-
-
 
 img.mockup {
     width: 70%;
     height: auto;
     float: right;
-     @include breakpoint {
+    @include breakpoint {
         width: 70%;
         height: auto;
         float: none;
-       
     }
 }
 
 img.logo {
     width: 40%;
     height: auto;
-    
-     @include breakpoint {
-         padding-top: 2rem;
+    @include breakpoint {
+        padding-top: 2rem;
         margin-left: 0;
         width: 30%;
         height: auto;
-         
-      
-       
     }
 }
 
 
 /*LAYOUT*/
-.l-toogle-btn{
+
+.l-toogle-btn {
     width: 100%;
     margin: 0 auto;
     height: 9rem;
     padding-top: 3rem;
     text-align: center;
-    border-bottom: 0.5px solid #1D1D1B;
-    @include breakpoint{
-       
-       height: 12rem;
+    border-bottom: 0.5px solid $text-grey;
+    @include breakpoint {
+        height: 12rem;
     }
 }
 
-.h-intro{
+.h-intro {
     width: 40%;
     margin: 0;
     height: 10rem;
     padding: 9rem 1.5rem;
     text-align: left;
-    
-     @include large-breakpoint{
-       width:60%;
-       height: 10rem;
+    @include large-breakpoint {
+        width: 60%;
+        height: 10rem;
     }
-    
-    
-    @include medium-breakpoint{
-       width:80%;
-       height: 10rem;
+    @include medium-breakpoint {
+        width: 80%;
+        height: 10rem;
     }
-    
-    @include small-breakpoint{
-       width:100%;
-       height: 10rem;
+    @include small-breakpoint {
+        width: 100%;
+        height: 10rem;
     }
 }
 
-.intro{
+.intro {
     width: 100%;
     margin: 0 auto;
     height: 10rem;
     padding: 3rem 0;
     text-align: center;
-    border-top: 0.5px solid #1D1D1B;
-    @include breakpoint{
-       
-       height: 10rem;
+    border-top: 0.5px solid $text-grey;
+    @include breakpoint {
+        height: 10rem;
     }
 }
 
-.l-address{
+.l-address {
     width: 100%;
     padding-top: 0.5rem;
-    
-   
-    @include breakpoint{
-        width:100%;
+    @include breakpoint {
+        width: 100%;
     }
 }
 
-.l-address p{
+.l-address p {
     font-family: $primary-font;
     font-size: 0.8rem;
     line-height: 1.2rem;
     font-style: normal;
-    color: #FFF;
+    color: $multipurpose-white;
 }
 
 
 /*MATERIALIZE MODS*/
 
-.l-btn-mod{
-   display:inline-block;
+.l-btn-mod {
+    display: inline-block;
 }
 
-.btn-mod {
-   
-    background-color: #B90C0E;    
+a.waves-effect.waves-light.btn.btn-mod {
+    background-color: $primary-red;
     transition: all 0.5s ease;
     &:link {
+<<<<<<< HEAD
         background-color: #B90C0E;
         
     }
     &:hover {
         background-color: #777;
         
+=======
+        background-color: $primary-red;
+    }
+    &:visited {
+        background-color: $primary-red;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $link-grey;
+>>>>>>> menu_tentativa
     }
     &:active {
         background-color: #B90C0E;
@@ -518,18 +702,18 @@ img.logo {
 }
 
 hr {
-	border: none;
+    border: none;
     height: 0.04rem;
     background-color: #ddd;
 }
 
 .btn-mod-border {
-    width:100%;
-    min-width:160px;
-    background-color: #fff;
+    width: 100%;
+    min-width: 160px;
+    background-color: $multipurpose-white;
     line-height: 3rem;
     height: 3rem;
-    border: 1px solid #777;
+    border: 1px solid $link-grey;
     border-radius: 4px;
     box-shadow: none;
     transition: all 0.5s ease;
@@ -539,32 +723,31 @@ hr {
     font-family: $secondary-font;
     font-size: 1rem;
     font-style: italic;
-    color: #777;
-     text-transform: lowercase;
+    color: $link-grey;
+    text-transform: lowercase;
     &:hover {
-        width:100%;
-        background-color: #fff;
-        min-width:160px;
+        width: 100%;
+        background-color: $multipurpose-white;
+        min-width: 160px;
         box-shadow: none;
-        border: 1px solid #B90C0E;
+        border: 1px solid $primary-red;
         box-sizing: border-box;
-        color: #B90C0E;
+        color: $primary-red;
     }
     &:focus {
-        background-color: #fff;
-        color: #B90C0E;
-        border: 1px solid #B90C0E;
+        background-color: $multipurpose-white;
+        color: $primary-red;
+        border: 1px solid $primary-red;
     }
 }
 
-
-.btn-active{
-    border-color: #B90C0E;
-    color: #B90C0E;
-       transition: all 0.5s ease;
+.btn-active {
+    border-color: $primary-red;
+    color: $primary-red;
+    transition: all 0.5s ease;
     &:hover {
-        border-color: #777;
-        color: #777;
+        border-color: $link-grey;
+        color: $link-grey;
     }
 }
 
@@ -575,16 +758,16 @@ hr {
 
 /*MAILCHIMP*/
 
-div#mc_embed_signup_scroll{
-    width:90%;
+div#mc_embed_signup_scroll {
+    width: 90%;
     margin: 0 auto;
 }
+
 #mc_embed_signup {
-    
     background: rgba(black, 0.6);
     position: absolute;
     bottom: 0;
-    left:0;
+    left: 0;
     font: 1rem $primary-font;
     width: 100%;
 }
@@ -594,10 +777,11 @@ div#mc_embed_signup_scroll{
     margin: 0 auto;
     text-align: center;
     padding: 2rem 0 2rem 0;
-    @include breakpoint{
-        width:75%;
-    }@include medium-breakpoint{
-        width:95%;
+    @include breakpoint {
+        width: 75%;
+    }
+    @include medium-breakpoint {
+        width: 95%;
     }
 }
 
@@ -617,7 +801,7 @@ div#mc_embed_signup_scroll{
     -moz-border-radius: 0.3rem;
     border-radius: 0.3rem;
     color: #343434;
-    background-color: #fff;
+    background-color: $multipurpose-white;
     box-sizing: border-box;
     height: 2.4rem;
     line-height: 2.4rem;
@@ -637,16 +821,14 @@ div#mc_embed_signup_scroll{
     text-align: left;
     font-family: $secondary-font;
     font-style: italic;
-    color: #fff;
-    
-    @include xlarge-breakpoint{
+    color: $multipurpose-white;
+    @include xlarge-breakpoint {
         padding-left: 2vw;
     }
-     @include large-breakpoint{
+    @include large-breakpoint {
         padding-left: 1vw;
     }
-    
-    @include breakpoint{
+    @include breakpoint {
         padding-left: 0;
     }
 }
@@ -668,9 +850,9 @@ div#mc_embed_signup_scroll{
     -moz-border-radius: 0.3rem;
     border-radius: 0.3rem;
     letter-spacing: .03em;
-    color: #fff;
-    border: 1px solid #fff;
-    background-color: #B90C0E;
+    color: $multipurpose-white;
+    border: 1px solid $multipurpose-white;
+    background-color: $primary-red;
     box-sizing: border-box;
     height: 2.4rem;
     line-height: 2.4rem;
@@ -681,7 +863,7 @@ div#mc_embed_signup_scroll{
 }
 
 #mc_embed_signup .button:hover {
-    background-color: #777;
+    background-color: $link-grey;
     cursor: pointer;
 }
 
@@ -737,4 +919,3 @@ div#mc_embed_signup_scroll{
         margin: 0;
     }
 }
-
