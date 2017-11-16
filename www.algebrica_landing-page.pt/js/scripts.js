@@ -2,24 +2,26 @@
 
 $(document).ready(function () {
     
-var hamburger = document.getElementById("hamburger");
-var content = document.getElementById("nav-content");
-var navigation = document.getElementById("h-navigation");
+var hamburger = document.getElementById('hamburger');
+var content = document.getElementById('nav-content');
+var navigation = document.getElementById('h-navigation');
 // On click
 
-hamburger.addEventListener("click", function () {
+hamburger.addEventListener('click', function () {
 
-    var aux = hamburger.classList.toggle("is-active");
+    var aux = hamburger.classList.toggle('is-active');
 
     if (aux) {
-        content.classList.add("is-visible");
+        content.classList.add('is-visible');
         content.style.visibility = 'visible';
-        navigation.classList.add("drop");
+        navigation.classList.add('drop');
+        
+      
 
     } else {
-        content.classList.remove("is-visible");
+        content.classList.remove('is-visible');
         content.style.visibility = 'hidden';
-        navigation.classList.remove("drop");
+        navigation.classList.remove('drop');
 
     }
 
@@ -93,6 +95,9 @@ function hasScrolled() {
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
         $('header').removeClass('nav-down').addClass('h-nav-up');
+        
+       
+         
     } else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {
