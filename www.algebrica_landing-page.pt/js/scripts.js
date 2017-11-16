@@ -7,7 +7,7 @@ var content = document.getElementById('nav-content');
 var navigation = document.getElementById('h-navigation');
 // On click
 
-hamburger.addEventListener('click', function () {
+$('#hamburger, #nav-content a').click (function () {
 
     var aux = hamburger.classList.toggle('is-active');
 
